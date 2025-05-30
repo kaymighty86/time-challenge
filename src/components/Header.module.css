@@ -1,0 +1,28 @@
+.header{
+    margin: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.header h2{
+    margin: 1rem 0px 0.6rem 0px;
+    color: var(--accent);
+}
+
+.header p{
+    font-size: 0.73rem;
+}
+
+.nameInputSection{
+    width: fit-content;
+    border: 2px solid var(--accent);
+    margin: 0px auto;
+    border-radius: 0.3rem;
+    overflow: hidden;
+}
+
+.nameInputSection>input,.nameInputSection>button{
+    border: none;
+    border-radius: 0px;
+    margin: 0px;
+}
