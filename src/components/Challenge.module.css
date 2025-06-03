@@ -1,0 +1,44 @@
+.challengeCard{
+    background: var(--background-light);
+    width: 15rem;
+    border-radius: 0.4rem;
+    padding: 1rem;
+    margin: 1.5rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.challengeCard>h2{
+    color: var(--text-dark);
+}
+
+.challengeCard>p{
+    color: var(--text-dark);
+    font-size: small;
+    margin: 1.3rem auto;
+}
+
+.challengeCard>p.time{
+    border: 1px solid #04161434;
+    padding: 0.25rem;
+    width: fit-content;
+    border-radius: 0.3rem;
+    margin-top: 0.6rem;
+    margin-bottom: 1.8rem;
+}
+
+.challengeCard>button{
+    background: var(--background-dark);
+    color: var(--text-light);
+    padding: 0.45rem 0.8rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.challengeCard>button:hover{
+    opacity: 0.85;
+}
+
+.challengeCard>button:hover:active{
+    opacity: 1;
+}

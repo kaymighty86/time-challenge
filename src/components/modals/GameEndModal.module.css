@@ -1,0 +1,36 @@
+.GameEndModal{
+    border: none;
+    background: #d3f8f0;
+    border-radius: 0.4rem;
+    padding: 1rem 2rem;
+}
+
+.GameEndModal::backdrop{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.GameEndModal>h1{
+    font-size: 3rem;
+}
+
+.GameEndModal>p b{
+    color: #0c6e60;
+}
+
+.GameEndModal button{
+    float: right;
+    background: var(--background-dark);
+    color: var(--text-light);
+    padding: 0.45rem 0.8rem;
+    margin: 1rem 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.GameEndModal button:hover{
+    opacity: 0.85;
+}
+
+.GameEndModal button:hover:active{
+    opacity: 1;
+}
