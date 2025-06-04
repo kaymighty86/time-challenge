@@ -1,23 +1,44 @@
 import style from "./GameEndModal.module.css";
 
-import { useEffect, useRef } from "react";
+import { useRef, forwardRef, useImperativeHandle, useState } from "react";
 
-export default function GameEndModal({targetTime = 0}){
+const GameEndModal = forwardRef(function GameEndModal({onClose}, ref){
 
     const dialogModal = useRef();
+    const[scoreData, setScoreData] = useState({
+        targetTime: 0,
+        currentTime: 0,
+        score: 0
+    });
 
-    useEffect(()=>{
-        dialogModal.current.showModal();
-    },[]);
+    useImperativeHandle(ref, ()=>{
+        return {
+            open: (targetTime = 0, currentTime = 0, score = 0)=>{
+                setScoreData({
+                    targetTime,
+                    currentTime,
+                    score
+                });
+
+                dialogModal.current.showModal();
+            }
+        }
+    });
+
+    function onCloseDialog(){
+        onClose && onClose();//execute any function here if there is any
+    }
 
     return (
-        <dialog ref={dialogModal} className={style.GameEndModal}>
-            <h1>YOU LOST</h1>
-            <p>The target tie was <b>{targetTime} second{targetTime > 1 && "s"}</b></p>
-            <p>You stopped the time with <b>x seconds left</b></p>
-            <form>
+        <dialog ref={dialogModal} className={style.GameEndModal} onClose={onCloseDialog}>
+            {scoreData.currentTime > 0? <h1>YOUR SCORE: {scoreData.score}</h1> : <h1>YOU LOST</h1>}
+            <p>The target time was <b>{scoreData.targetTime} second{scoreData.targetTime > 1 && "s"}</b></p>
+            <p>You stopped the time with <b>{scoreData.currentTime} second{scoreData.currentTime > 1 && "s"} left</b></p>
+            <form method="dialog">
                 <button>Close</button>
             </form>
         </dialog>
     );
-}
+});
+
+export default GameEndModal;

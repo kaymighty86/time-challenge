@@ -12,10 +12,10 @@ function App() {
       <Header />
       <GameManager>
         <section className="challenges_section">
-          <Challenge title="EASY" seconds={1}/>
-          <Challenge title="MEDIUM" seconds={5}/>
-          <Challenge title="GETTING TOUGH" seconds={10}/>
-          <Challenge title="PRO" seconds={15}/>
+          <Challenge title="EASY" targetTime={1}/>
+          <Challenge title="MEDIUM" targetTime={5}/>
+          <Challenge title="GETTING TOUGH" targetTime={10}/>
+          <Challenge title="PRO" targetTime={15}/>
         </section>
       </GameManager>
     </main>

@@ -1,8 +1,12 @@
 import style from "./Challenge.module.css";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 
-export default function Challenge({title, seconds}){
+import { gameManagerContext } from "../contexts/gameManagerContext";
+
+export default function Challenge({title, targetTime}){
+
+    const {gameEnded} = useContext(gameManagerContext);
 
     const [challengeStarted, setChallengeStarted] = useState(false);
     const currentTime = useRef();
@@ -11,7 +15,7 @@ export default function Challenge({title, seconds}){
 
     function countdownTrigger(){
         if(!challengeStarted){//if the timer is not active
-            currentTime.current = seconds * 1000;//convert the seconds to miliseconds
+            currentTime.current = targetTime * 1000;//initialise startTime and convert the targetTime to miliseconds
 
             timer.current = setInterval(()=>{
                 currentTime.current -= interval;
@@ -31,7 +35,7 @@ export default function Challenge({title, seconds}){
 
     function stopTimer(){
         clearInterval(timer.current);
-
+        gameEnded(targetTime, currentTime.current/1000);
         //if there is still time left, it means the timer was manually halted
         console.log(currentTime.current > 0? `timer halted at ${currentTime.current/1000}s` : "timer ended");
         
@@ -41,7 +45,7 @@ export default function Challenge({title, seconds}){
     return (
         <div className={style.challengeCard}>
             <h2>{title}</h2>
-            <p className={style.time}>{seconds} second{seconds > 1 && "s"}</p>
+            <p className={style.time}>{targetTime} second{targetTime > 1 && "s"}</p>
             <button onClick={countdownTrigger}>{challengeStarted? "Stop" : "Start Challenge"}</button>
             <p>{challengeStarted? "Counting Down..." : "Timer Inactive"}</p>
         </div>

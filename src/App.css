@@ -16,3 +16,15 @@ main {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+@media (max-width: 600px) {
+  main{
+    margin: 0px;
+    width: 100%;
+    max-width: none;
+    box-shadow: none;
+    border-radius: 0px;
+    padding-top: 2.5rem;
+  }
+  
+}
